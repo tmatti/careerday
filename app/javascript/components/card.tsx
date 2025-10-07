@@ -37,7 +37,7 @@ export default function Card({
       <div
         className={`bg-white rounded-3xl shadow-2xl p-8 border-4 ${borderColorClasses[borderColor]} transition-colors`}
       >
-        <div className="text-center">
+        <div className="text-center items-center flex flex-col">
           <div className="text-8xl mb-6 group-hover:animate-bounce">
             {emoji}
           </div>

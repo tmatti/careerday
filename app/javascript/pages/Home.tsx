@@ -1,5 +1,5 @@
 import { Head } from "@inertiajs/react";
-import Card from "../components/card";
+import Card from "../components/Card";
 import { router } from "@inertiajs/react";
 import Header from "../components/Header";
 
@@ -17,7 +17,7 @@ export default function Home() {
       <Head title="Career Day" />
 
       {/* Main Container */}
-      <div className="min-h-screen bg-gradient-to-br from-blue-600 to-yellow-400 py-12 px-4">
+      <div className="min-h-screen bg-gradient-to-br from-blue-600 to-yellow-400 p-4">
         <Header />
 
         {/* Cards Container */}

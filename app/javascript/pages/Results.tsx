@@ -16,7 +16,7 @@ export default function Results() {
       <Head title="Career Day - Results!" />
 
       {/* Main Container */}
-      <div className="min-h-screen bg-gradient-to-br from-blue-600 to-yellow-400 py-12 px-4">
+      <div className="min-h-screen bg-gradient-to-br from-blue-600 to-yellow-400 p-4">
         {/* Header */}
         <Header />
       </div>

@@ -1,15 +1,14 @@
 import { Link } from "@inertiajs/react";
+import cometPng from "/assets/comet.png";
 
 export default function Header() {
   return (
     <Link href="/">
-      <div className="text-center mb-8">
-        <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">
-          💫 Career Day! 💫
+      <div className="flex justify-center items-center mb-4">
+        <img src={cometPng} alt="Comet" className="w-28" />
+        <h1 className="text-5xl md:text-6xl font-bold text-white drop-shadow-lg">
+          Comet Career Day
         </h1>
-        <p className="text-xl md:text-2xl text-white font-medium drop-shadow-md">
-          What do you want to be when you grow up?
-        </p>
       </div>
     </Link>
   );
