@@ -1,6 +1,7 @@
 import { Head } from "@inertiajs/react";
 import Card from "../components/card";
 import { router } from "@inertiajs/react";
+import Header from "../components/Header";
 
 export default function Home() {
   const handleVoteClick = () => {
@@ -13,19 +14,11 @@ export default function Home() {
 
   return (
     <>
-      <Head title="Career Day - Dream Big!" />
+      <Head title="Career Day" />
 
       {/* Main Container */}
-      <div className="min-h-screen bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500">
-        {/* Header */}
-        <div className="text-center pt-12 pb-8">
-          <h1 className="text-6xl font-bold text-white mb-4 drop-shadow-lg">
-            🌟 Career Day! 🌟
-          </h1>
-          <p className="text-2xl text-white font-medium drop-shadow-md">
-            What do you want to be when you grow up?
-          </p>
-        </div>
+      <div className="min-h-screen bg-gradient-to-br from-blue-600 to-yellow-400 py-12 px-4">
+        <Header />
 
         {/* Cards Container */}
         <div className="max-w-6xl mx-auto px-6 py-8">
