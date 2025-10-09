@@ -52,8 +52,6 @@ export default function Vote({ errors }: { errors: any }) {
       },
     };
 
-    console.log(params);
-
     router.post("/votes", params);
   };
 

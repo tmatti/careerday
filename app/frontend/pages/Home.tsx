@@ -1,9 +1,23 @@
-import { Head } from "@inertiajs/react";
+import { Head, usePage } from "@inertiajs/react";
 import Card from "../components/Card";
 import { router } from "@inertiajs/react";
 import Header from "../components/Header";
+import Confetti from "../components/Confetti";
+
+interface FlashMessages {
+  success?: string;
+  error?: string;
+  notice?: string;
+}
+
+interface PageProps {
+  flash: FlashMessages;
+  [key: string]: any;
+}
 
 export default function Home() {
+  const { flash } = usePage<PageProps>().props;
+
   const handleVoteClick = () => {
     router.get("/votes/new");
   };
@@ -15,6 +29,7 @@ export default function Home() {
   return (
     <>
       <Head title="Career Day" />
+      <Confetti trigger={!!flash.success} />
 
       {/* Main Container */}
       <div className="min-h-screen bg-gradient-to-br from-blue-600 to-yellow-400 p-4">

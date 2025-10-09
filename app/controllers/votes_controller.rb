@@ -32,6 +32,7 @@ class VotesController < ApplicationController
     vote = Vote.new(vote_params)
 
     if vote.save
+      flash[:success] = "Vote submitted successfully!"
       redirect_to root_url
     else
       redirect_to new_vote_url, inertia: { errors: vote.errors }
