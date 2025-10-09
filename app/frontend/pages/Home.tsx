@@ -22,7 +22,7 @@ export default function Home() {
 
         {/* Cards Container */}
         <div className="max-w-6xl mx-auto px-6 py-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto">
             <Card
               title="Vote for Your Dream Job!"
               description="Pick your favorite career and help us see what kids want to be! Astronaut? Doctor? Artist? The choice is yours!"
