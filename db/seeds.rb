@@ -30,7 +30,7 @@ names = [
   "Carter", "Nora", "Owen", "Hannah", "Wyatt", "Aria", "John"
 ]
 
-genders = ["male", "female"]
+genders = ["Boy", "Girl"]
 grades = ["Kindergarten", "1st Grade", "2nd Grade", "3rd Grade", "4th Grade", "5th Grade"] # Elementary grades K-5
 
 # Create 100 sample votes
