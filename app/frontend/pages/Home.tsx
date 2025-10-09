@@ -28,7 +28,7 @@ export default function Home() {
               description="Pick your favorite career and help us see what kids want to be! Astronaut? Doctor? Artist? The choice is yours!"
               emoji="🚀"
               buttonText="Start Voting! 🗳️"
-              buttonColor="green"
+              buttonColor="blue"
               borderColor="yellow"
               onClick={handleVoteClick}
             />
@@ -38,7 +38,7 @@ export default function Home() {
               description="Check out what careers are the most popular! See colorful charts and discover what other kids dream of becoming!"
               emoji="📊"
               buttonText="View Results! 📈"
-              buttonColor="purple"
+              buttonColor="yellow"
               borderColor="purple"
               onClick={handleResultsClick}
             />

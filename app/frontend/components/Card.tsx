@@ -3,7 +3,7 @@ interface CardProps {
   description: string;
   emoji: string;
   buttonText: string;
-  buttonColor: "green" | "purple";
+  buttonColor: "blue" | "yellow";
   borderColor: "yellow" | "purple";
   onClick?: () => void;
 }
@@ -18,15 +18,14 @@ export default function Card({
   onClick,
 }: CardProps) {
   const buttonColorClasses = {
-    green:
-      "bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700",
-    purple:
-      "bg-gradient-to-r from-purple-400 to-purple-600 hover:from-purple-500 hover:to-purple-700",
+    blue: "bg-gradient-to-br from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800",
+    yellow:
+      "bg-gradient-to-br from-yellow-400 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700",
   };
 
   const borderColorClasses = {
-    yellow: "border-yellow-300 hover:border-yellow-400",
-    purple: "border-purple-300 hover:border-purple-400",
+    yellow: "border-yellow-400 hover:border-yellow-500",
+    purple: "border-blue-400 hover:border-blue-500",
   };
 
   return (
@@ -46,7 +45,7 @@ export default function Card({
             {description}
           </p>
           <button
-            className={`${buttonColorClasses[buttonColor]} text-white font-bold py-4 px-8 rounded-full text-xl shadow-lg transform transition-all duration-200 hover:scale-110`}
+            className={`${buttonColorClasses[buttonColor]} text-white font-bold py-4 px-8 rounded-2xl text-xl shadow-lg transform transition-all duration-200 hover:scale-105 hover:shadow-xl`}
           >
             {buttonText}
           </button>

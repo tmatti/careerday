@@ -49,8 +49,8 @@ export default function Vote({ errors }: { errors: any }) {
         grade: formData.grade,
         gender: formData.gender,
         career: jobToSubmit,
-      }
-    }
+      },
+    };
 
     console.log(params);
 
@@ -76,109 +76,135 @@ export default function Vote({ errors }: { errors: any }) {
         <Header />
 
         {/* Form Container */}
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Name Input */}
-              <h2 className="block text-2xl font-bold text-purple-700 mb-2">
-                Your Info 🪪
-              </h2>
-              <div className="flex items-center gap-4">
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  required
-                  className="px-4 py-3 text-lg border-4 border-purple-300 rounded-xl focus:outline-none focus:border-purple-500 focus:ring-4 focus:ring-purple-200"
-                  placeholder="Enter your name"
-                />
+            <form onSubmit={handleSubmit} className="space-y-8">
+              {/* Personal Info Section */}
+              <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl p-6 space-y-6">
+                <h2 className="text-3xl font-bold text-blue-700 mb-4">
+                  About You 🪪
+                </h2>
 
-                {/* Grade Select */}
-                <div>
-                  <select
-                    id="grade"
-                    name="grade"
-                    value={formData.grade}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 text-lg border-4 border-purple-300 rounded-xl focus:outline-none focus:border-purple-500 focus:ring-4 focus:ring-purple-200"
-                  >
-                    <option value="">Grade</option>
-                    <option value="Kindergarten">Kindergarten</option>
-                    <option value="1st">1st Grade</option>
-                    <option value="2nd">2nd Grade</option>
-                    <option value="3rd">3rd Grade</option>
-                    <option value="4th">4th Grade</option>
-                    <option value="5th">5th Grade</option>
-                  </select>
+                {/* Name and Grade Row */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-semibold text-blue-600 mb-2"
+                    >
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      className="w-full px-5 py-4 text-lg border-4 border-blue-300 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-200 transition-all"
+                      placeholder="Your name (optional)"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="grade"
+                      className="block text-sm font-semibold text-blue-600 mb-2"
+                    >
+                      Grade
+                    </label>
+                    <select
+                      id="grade"
+                      name="grade"
+                      value={formData.grade}
+                      onChange={handleInputChange}
+                      className="w-full px-5 py-4 text-lg border-4 border-blue-300 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-200 transition-all"
+                    >
+                      <option value="">Pick your grade</option>
+                      <option value="Kindergarten">Kindergarten</option>
+                      <option value="1st">1st Grade</option>
+                      <option value="2nd">2nd Grade</option>
+                      <option value="3rd">3rd Grade</option>
+                      <option value="4th">4th Grade</option>
+                      <option value="5th">5th Grade</option>
+                    </select>
+                  </div>
                 </div>
 
-                {/* Gender Radio Buttons */}
-                <div className="flex gap-4 justify-center">
-                  <label className="flex items-center gap-3 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="gender"
-                      value="Boy"
-                      checked={formData.gender === "Boy"}
-                      onChange={handleInputChange}
-                      required
-                      className="w-6 h-6 text-purple-600 focus:ring-4 focus:ring-purple-200"
-                    />
-                    <span className="text-2xl font-bold text-purple-700">
-                      Boy
-                    </span>
+                {/* Gender Selection */}
+                <div>
+                  <label className="block text-sm font-semibold text-blue-600 mb-3">
+                    I am a... <span className="text-red-500">*</span>
                   </label>
-                  <label className="flex items-center gap-3 cursor-pointer">
-                    <input
-                      type="radio"
-                      name="gender"
-                      value="Girl"
-                      checked={formData.gender === "Girl"}
-                      onChange={handleInputChange}
-                      required
-                      className="w-6 h-6 text-purple-600 focus:ring-4 focus:ring-purple-200"
-                    />
-                    <span className="text-2xl font-bold text-purple-700">
-                      Girl
-                    </span>
-                  </label>
+                  <div className="flex gap-4 justify-start">
+                    <label className="flex-1 max-w-[200px]">
+                      <input
+                        type="radio"
+                        name="gender"
+                        value="Boy"
+                        checked={formData.gender === "Boy"}
+                        onChange={handleInputChange}
+                        required
+                        className="peer sr-only"
+                      />
+                      <div className="cursor-pointer border-4 border-blue-300 rounded-xl px-6 py-4 text-center font-bold text-lg text-blue-700 peer-checked:border-blue-500 peer-checked:bg-blue-100 peer-checked:text-blue-700 hover:border-blue-400 transition-all">
+                        👦 Boy
+                      </div>
+                    </label>
+                    <label className="flex-1 max-w-[200px]">
+                      <input
+                        type="radio"
+                        name="gender"
+                        value="Girl"
+                        checked={formData.gender === "Girl"}
+                        onChange={handleInputChange}
+                        required
+                        className="peer sr-only"
+                      />
+                      <div className="cursor-pointer border-4 border-blue-300 rounded-xl px-6 py-4 text-center font-bold text-lg text-blue-700 peer-checked:border-pink-500 peer-checked:bg-pink-100 peer-checked:text-pink-700 hover:border-blue-400 transition-all">
+                        👧 Girl
+                      </div>
+                    </label>
+                  </div>
                 </div>
               </div>
 
-              {/* Dream Job Select */}
-              <div>
-                <label
-                  htmlFor="dreamJob"
-                  className="block text-2xl font-bold text-purple-700 mb-2"
-                >
-                  Dream Job 🚀
-                </label>
-                <select
-                  id="dreamJob"
-                  name="dreamJob"
-                  value={formData.dreamJob}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-3 text-lg border-4 border-purple-300 rounded-xl focus:outline-none focus:border-purple-500 focus:ring-4 focus:ring-purple-200"
-                >
-                  <option value="">What do you want to be?</option>
-                  {DREAM_JOBS.map((job) => (
-                    <option key={job} value={job}>
-                      {job}
-                    </option>
-                  ))}
-                </select>
+              {/* Dream Job Section */}
+              <div className="bg-gradient-to-r from-blue-50 to-green-50 rounded-2xl p-6 space-y-4">
+                <h2 className="text-3xl font-bold text-blue-700 mb-2">
+                  Your Dream Job 🚀
+                </h2>
+                <div>
+                  <label
+                    htmlFor="dreamJob"
+                    className="block text-sm font-semibold text-blue-600 mb-2"
+                  >
+                    What do you want to be when you grow up?{" "}
+                    <span className="text-red-500">*</span>
+                  </label>
+                  <select
+                    id="dreamJob"
+                    name="dreamJob"
+                    value={formData.dreamJob}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-5 py-4 text-lg border-4 border-blue-300 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-200 transition-all"
+                  >
+                    <option value="">Choose your dream job...</option>
+                    {DREAM_JOBS.map((job) => (
+                      <option key={job} value={job}>
+                        {job}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               </div>
 
               {/* Other Job Input - Shows when "Other" is selected */}
               {formData.dreamJob === "Other" && (
-                <div className="animate-fadeIn">
+                <div className="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-2xl p-6 animate-fadeIn">
                   <label
                     htmlFor="otherJob"
-                    className="block text-2xl font-bold text-purple-700 mb-2"
+                    className="block text-2xl font-bold text-orange-700 mb-3"
                   >
                     Tell us your dream job! ✨
                   </label>
@@ -189,19 +215,19 @@ export default function Vote({ errors }: { errors: any }) {
                     value={formData.otherJob}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 text-lg border-4 border-purple-300 rounded-xl focus:outline-none focus:border-purple-500 focus:ring-4 focus:ring-purple-200"
-                    placeholder="Type your dream job here"
+                    className="w-full px-5 py-4 text-lg border-4 border-orange-300 rounded-xl focus:outline-none focus:border-orange-500 focus:ring-4 focus:ring-orange-200 transition-all"
+                    placeholder="Type your dream job here..."
                   />
                 </div>
               )}
 
               {/* Submit Button */}
-              <div className="pt-4">
+              <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-green-400 to-blue-500 text-white text-2xl font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 hover:from-green-500 hover:to-blue-600"
+                  className="w-full bg-gradient-to-br from-blue-500 to-blue-700 text-white text-3xl font-bold py-6 px-8 rounded-2xl shadow-lg hover:shadow-xl hover:from-blue-600 hover:to-blue-800 transform hover:scale-105 transition-all duration-200"
                 >
-                  Submit!
+                  🎉 Submit My Vote! 🎉
                 </button>
               </div>
             </form>
