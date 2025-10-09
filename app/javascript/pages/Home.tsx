@@ -5,11 +5,11 @@ import Header from "../components/Header";
 
 export default function Home() {
   const handleVoteClick = () => {
-    router.get("votes/new");
+    router.get("/votes/new");
   };
 
   const handleResultsClick = () => {
-    router.get("votes");
+    router.get("/votes");
   };
 
   return (

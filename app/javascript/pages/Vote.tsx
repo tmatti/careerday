@@ -1,6 +1,6 @@
 import { Head } from "@inertiajs/react";
 import { router } from "@inertiajs/react";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import Header from "../components/Header";
 
 const DREAM_JOBS = [
@@ -21,7 +21,7 @@ const DREAM_JOBS = [
   "Other",
 ];
 
-export default function Vote() {
+export default function Vote({ errors }: { errors: any }) {
   const [formData, setFormData] = useState({
     name: "",
     grade: "",
@@ -30,6 +30,12 @@ export default function Vote() {
     otherJob: "",
   });
 
+  useEffect(() => {
+    if (Object.keys(errors).length > 0) {
+      alert(JSON.stringify(errors));
+    }
+  }, [errors]);
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
@@ -37,16 +43,18 @@ export default function Vote() {
     const jobToSubmit =
       formData.dreamJob === "Other" ? formData.otherJob : formData.dreamJob;
 
-    // TODO: Submit to backend
-    console.log({
-      name: formData.name,
-      grade: formData.grade,
-      gender: formData.gender,
-      dreamJob: jobToSubmit,
-    });
+    const params = {
+      vote: {
+        name: formData.name,
+        grade: formData.grade,
+        gender: formData.gender,
+        career: jobToSubmit,
+      }
+    }
 
-    // Navigate to results or success page
-    router.get("votes");
+    console.log(params);
+
+    router.post("/votes", params);
   };
 
   const handleInputChange = (

@@ -15,22 +15,18 @@ class VotesController < ApplicationController
 
   # POST /votes or /votes.json
   def create
-    @vote = Vote.new(vote_params)
+    vote = Vote.new(vote_params)
 
-    respond_to do |format|
-      if @vote.save
-        format.html { redirect_to @vote, notice: "Vote was successfully created." }
-        format.json { render :show, status: :created, location: @vote }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @vote.errors, status: :unprocessable_entity }
-      end
+    if vote.save
+      redirect_to root_url
+    else
+      redirect_to new_vote_url, inertia: { errors: vote.errors }
     end
   end
 
   private
     # Only allow a list of trusted parameters through.
     def vote_params
-      params.fetch(:vote, {})
+      params.require(:vote).permit(:name, :grade, :gender, :career)
     end
 end
