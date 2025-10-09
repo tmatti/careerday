@@ -20,13 +20,17 @@ interface CareerVotesByGenderChartProps {
   data: CareerGenderData[];
 }
 
-const GENDER_COLORS: Record<string, string> = {
-  Male: "#3B82F6", // bright blue
-  Female: "#EC4899", // bright pink
-  "Non-binary": "#8B5CF6", // purple
-  "Prefer not to say": "#10B981", // green
-  Other: "#F59E0B", // amber
-};
+// Bright, kid-friendly color palette
+const COLOR_PALETTE = [
+  "#3B82F6", // bright blue
+  "#EC4899", // bright pink
+  "#10B981", // green
+  "#F59E0B", // amber
+  "#8B5CF6", // purple
+  "#EF4444", // red
+  "#06B6D4", // cyan
+  "#F97316", // orange
+];
 
 const GENDER_EMOJIS: Record<string, string> = {
   Male: "👦",
@@ -34,6 +38,19 @@ const GENDER_EMOJIS: Record<string, string> = {
   "Non-binary": "🌟",
   "Prefer not to say": "😊",
   Other: "✨",
+};
+
+const CAREER_EMOJIS: Record<string, string> = {
+  Doctor: "🩺",
+  Teacher: "📚",
+  Engineer: "🔧",
+  Scientist: "🔬",
+  Artist: "🎨",
+  Firefighter: "🚒",
+  Police: "👮",
+  Chef: "👨‍🍳",
+  Astronaut: "🚀",
+  Veterinarian: "🐾",
 };
 
 // Custom tooltip with kid-friendly styling
@@ -63,8 +80,12 @@ const CustomLegend = ({ payload }: any) => {
       {payload.map((entry: any, index: number) => (
         <div
           key={index}
-          className="flex items-center gap-3 bg-white px-5 py-3 rounded-full shadow-lg border-3 transform transition-transform hover:scale-110"
-          style={{ borderColor: entry.color, borderWidth: "3px" }}
+          className="flex items-center gap-3 bg-white px-5 py-3 rounded-full shadow-lg transform transition-transform hover:scale-110"
+          style={{
+            borderColor: entry.color,
+            borderWidth: "3px",
+            borderStyle: "solid",
+          }}
         >
           <span className="text-2xl">{GENDER_EMOJIS[entry.value] || "⭐"}</span>
           <div
@@ -82,20 +103,7 @@ const CustomLegend = ({ payload }: any) => {
 
 // Custom Y-axis tick with emojis
 const CustomYAxisTick = ({ x, y, payload }: any) => {
-  const careerEmojis: Record<string, string> = {
-    Doctor: "🩺",
-    Teacher: "📚",
-    Engineer: "🔧",
-    Scientist: "🔬",
-    Artist: "🎨",
-    Firefighter: "🚒",
-    Police: "👮",
-    Chef: "👨‍🍳",
-    Astronaut: "🚀",
-    Veterinarian: "🐾",
-  };
-
-  const emoji = careerEmojis[payload.value] || "⭐";
+  const emoji = CAREER_EMOJIS[payload.value] || "⭐";
 
   return (
     <g transform={`translate(${x},${y})`}>
@@ -137,6 +145,12 @@ export default function CareerVotesByGenderChart({
       ),
     ),
   );
+
+  // Create color mapping for each gender
+  const genderColors: Record<string, string> = {};
+  genderKeys.forEach((gender, index) => {
+    genderColors[gender] = COLOR_PALETTE[index % COLOR_PALETTE.length];
+  });
 
   return (
     <div
@@ -180,7 +194,7 @@ export default function CareerVotesByGenderChart({
             <Bar
               key={gender}
               dataKey={gender}
-              fill={GENDER_COLORS[gender] || "#6B7280"}
+              fill={genderColors[gender]}
               name={gender}
               radius={[0, 12, 12, 0]}
               animationDuration={1000}
