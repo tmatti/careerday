@@ -11,13 +11,13 @@ export default function Confetti({ trigger }: ConfettiProps) {
       // Fire confetti!
       const duration = 3000;
       const animationEnd = Date.now() + duration;
-      const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+      const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0, scalar: 3.5 };
 
       function randomInRange(min: number, max: number) {
         return Math.random() * (max - min) + min;
       }
 
-      const interval: NodeJS.Timeout = setInterval(function () {
+      const interval = setInterval(function () {
         const timeLeft = animationEnd - Date.now();
 
         if (timeLeft <= 0) {

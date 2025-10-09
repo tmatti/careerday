@@ -50,7 +50,7 @@ export default function Home() {
 
             <Card
               title="See the Results!"
-              description="Check out what careers are the most popular! See colorful charts and discover what other kids dream of becoming!"
+              description="Check out what careers are the most popular! Discover what other kids dream of becoming!"
               emoji="📊"
               buttonText="View Results! 📈"
               buttonColor="yellow"

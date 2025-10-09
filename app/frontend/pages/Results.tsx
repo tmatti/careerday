@@ -70,12 +70,12 @@ export default function Results({
         {/* Results Content */}
         <div className="max-w-6xl mx-auto mt-8 space-y-8">
           {/* Career Votes Chart */}
-          <ChartContainer title="Career Votes Results">
+          <ChartContainer title="Results">
             <CareerVotesPieChart data={chartData} totalVotes={totalVotes} />
           </ChartContainer>
 
           {/* Career Votes by Gender Chart */}
-          <ChartContainer title="Career Votes by Gender">
+          <ChartContainer title="Boys vs Girls">
             <CareerVotesByGenderChart data={votes_by_career_and_gender} />
           </ChartContainer>
         </div>
